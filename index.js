@@ -17,7 +17,7 @@ class Lspi {
   }
 
   deleteRecord(recordName) {
-    localStorage.clear(recordName)
+    localStorage.removeItem(recordName)
   }
 }
 
