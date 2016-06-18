@@ -8,17 +8,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "example.com"
+    "url": "https://github.com/selfup/lspi"
   },
   "keywords": [
     "local",
     "storage",
-    "localstorage",
+    "local storage",
     "api",
     "client",
-    "cliensideapi",
-    "clientside"
+    "clienside api",
+    "client side",
+    "client side",
+    "client side active record",
+    "local storage api"
   ],
-  "author": "Regis Boudinot",
+  "author": "selfup",
   "license": "MIT"
 }
