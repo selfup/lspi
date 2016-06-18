@@ -1,9 +1,9 @@
 class Lspi {
   createRecord(recordName) {
     const recordCheck = this.getRecord(recordName)
-    if (recordCheck === undefined) { 
-      return console.log(`${recordName} already exists!`) 
-    } else if (recordCheck) {
+    if (recordCheck) { 
+      console.log(`${recordName} already exists!`) 
+    } else if (!recordCheck) {
       localStorage.setItem(recordName, JSON.stringify({}))
     }
   }
