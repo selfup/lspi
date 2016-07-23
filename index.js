@@ -12,7 +12,7 @@ class Lspi {
     localStorage.setItem(recordName, JSON.stringify(data))
   }
   
-    updateStringRecord(recordName, string) {
+  updateStringRecord(recordName, string) {
     localStorage.setItem(recordName, string)
   }
 
