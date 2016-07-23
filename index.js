@@ -38,4 +38,4 @@ class Lspi {
   }
 }
 
-const lspi = new Lspi
+module.exports = Lspi
