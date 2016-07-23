@@ -1,5 +1,5 @@
 class Lspi {
-  createRecord(recordName) {
+  createEmptyRecordObject(recordName) {
     const recordCheck = this.getRecord(recordName)
     if (recordCheck) { 
       console.log(`The record: "${recordName}" already exists!`) 
@@ -8,16 +8,29 @@ class Lspi {
     }
   }
 
-  updateRecord(recordName, data) {
+  createEmptyRecordArray(recordName) {
+    const recordCheck = this.getRecord(recordName)
+    if (recordCheck) { 
+      console.log(`The record: "${recordName}" already exists!`) 
+    } else if (!recordCheck) {
+      localStorage.setItem(recordName, JSON.stringify([]))
+    }
+  }
+
+  setRecord(recordName, data) {
     localStorage.setItem(recordName, JSON.stringify(data))
   }
   
-  updateStringRecord(recordName, string) {
+  setStringRecord(recordName, string) {
     localStorage.setItem(recordName, string)
   }
 
-  getRecord(recordName) {
+  getObjectRecord(recordName) {
     return JSON.parse(localStorage.getItem(recordName))
+  }
+
+  getStringRecord(recordName) {
+    return localStorage.getItem(recordName)
   }
 
   deleteRecord(recordName) {
