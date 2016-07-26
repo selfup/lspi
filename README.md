@@ -3,6 +3,12 @@
 
 ### Basic ORM for local storage that can save you time!
 
+You will need webpack/browserify for this to work!
+
+Super easy to use with React/Angular2/Ember2
+
+***
+
 To add to your `package.json`:
 
 `npm install lspi --save`
