@@ -11,7 +11,7 @@ lspi.createEmptyRecordObject("testOne")
 // #=> "{}"
 // Now you can add keys to the result of getRecord
 
-lspi.createEmptyRecordObject("testTwo")
+lspi.createEmptyRecordArray("testTwo")
 // #=> "[]"
 // Now you can manipulate the array store with getRecord
 
