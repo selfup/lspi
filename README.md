@@ -3,6 +3,10 @@
 
 ### Basic ORM for local storage that can save you time!
 
+To add to your `package.json`:
+
+`npm install lspi --save`
+
 ```javascript
 const Lspi = require('lspi')
 const lspi = new Lspi()
