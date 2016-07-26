@@ -31,7 +31,7 @@ lspi.setStringRecord("testFour", "this is what I want to store")
 // #=> "this is what I want to store"
 
 lspi.getStringRecord("testFour")
-// #=> "testFour"
+// #=> "this is what I want to store"
 
 lspi.deleteRecord("testOne")
 // #=> undefined
