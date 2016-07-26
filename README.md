@@ -4,20 +4,42 @@
 ### Basic ORM for local storage that can save you time!
 
 ```javascript
-lspi.createRecord("testOne")
-// Now that you have created a record try grabbing it
+const Lspi = require('lspi')
+const lspi = new Lspi()
+
+lspi.createEmptyRecordObject("testOne")
+// #=> "{}"
+// Now you can add keys to the result of getRecord
+
+lspi.createEmptyRecordObject("testTwo")
+// #=> "[]"
+// Now you can manipulate the array store with getRecord
 
 lspi.getRecord("testOne")
-// This returns an empty object. Now we add a real object
+// #=> {}
 
-lspi.updateRecord("testOne", {test: "Basic data for the 'testOne' record"})
-// Now let's see what that really looks like
+lspi.getRecord("testTwo")
+// #=> []
 
-lspi.getRecord("testOne")
-// Ok cool! You are using a high level API for the LocalStorage API. Think of this as an ORM!
+// If you already have your object built and want to store it:
+// Also if you want to update what is in localStorage:
+lspi.setRecord("testThree", { someKey: "some value" })
+// #=> "{"someKey": "some value"}"
+
+// If you want to store a raw string
+lspi.setStringRecord("testFour", "this is what I want to store")
+// #=> "this is what I want to store"
+
+lspi.getStringRecord("testFour")
+// #=> "testFour"
 
 lspi.deleteRecord("testOne")
-// Now you don't have any more data. Feel free to use this in your projects!
+// #=> undefined
+// this will clear an exact record from local storage for your webpage
+
+lspi.dropAll() 
+// #=> undefined
+// Drops ALL localStorage records associated to your webpage
 ```
 
 ### License: MIT

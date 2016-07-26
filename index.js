@@ -1,6 +1,6 @@
 class Lspi {
   createEmptyRecordObject(recordName) {
-    const recordCheck = localStorage.getItem(recordName)
+    const recordCheck = this.getStringRecord(recordName)
     if (recordCheck) { 
       console.log(`The record: "${recordName}" already exists!`) 
     } else if (!recordCheck) {
@@ -9,7 +9,7 @@ class Lspi {
   }
 
   createEmptyRecordArray(recordName) {
-    const recordCheck = localStorage.getItem(recordName)
+    const recordCheck = this.getStringRecord(recordName)
     if (recordCheck) { 
       console.log(`The record: "${recordName}" already exists!`) 
     } else if (!recordCheck) {
@@ -25,7 +25,7 @@ class Lspi {
     localStorage.setItem(recordName, string)
   }
 
-  getObjectRecord(recordName) {
+  getRecord(recordName) {
     return JSON.parse(localStorage.getItem(recordName))
   }
 
@@ -35,6 +35,10 @@ class Lspi {
 
   deleteRecord(recordName) {
     localStorage.removeItem(recordName)
+  }
+
+  dropAll() {
+    localStorage.clear()
   }
 }
 
