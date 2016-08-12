@@ -39,7 +39,7 @@ class Lspi {
   }
 
   setRecords(args) {
-    args.forEach(arg => { this.setRecord(arg[0], arg[1]) })
+    args.forEach(arg => this.setRecord(arg[0], arg[1]))
   }
 
   setStringRecord(recordName, string) {
@@ -58,7 +58,7 @@ class Lspi {
   }
 
   getRecords() {
-    return Array.from(arguments).map(arg => { this.getRecord(arg) })
+    return Array.from(arguments).map(arg => this.getRecord(arg))
   }
 
   where(recordName, key, equals) {
@@ -107,7 +107,7 @@ class Lspi {
   }
 
   getStringRecords() {
-    return Array.from(arguments).map(arg => { this.getRecord(arg) })
+    return Array.from(arguments).map(arg => this.getRecord(arg))
   }
 
   deleteRecord(recordName) {
@@ -115,7 +115,7 @@ class Lspi {
   }
 
   deleteRecords() {
-    Array.from(arguments).forEach(arg => { this.deleteRecord(arg) })
+    Array.from(arguments).forEach(arg => this.deleteRecord(arg))
   }
 
   dropAll() {
