@@ -46,7 +46,7 @@ class Lspi {
     try {
       localStorage.setItem(recordName, string)
     } catch (error) {
-      console.log(`ERROR:\n\n${error}\n\n:ERROR\n\n`)
+      console.log  (`ERROR:\n\n${error}\n\n:ERROR\n\n`)
       console.error(`Could not set the "${recordName}" Record`)
     }
   }
@@ -89,14 +89,15 @@ class Lspi {
     const record = this.getRecord(recordName)
     let   result = []
     record.forEach(el => { if (query.includes(el)) result.push(el) })
-    if (!result[0]) return console.log("No weak matches")
+    if (!result[0]) return console.log(`No weak matches for ${query}`)
     return result
   }
 
   arrayStrongMatch(recordName, query) {
     const record = this.getRecord(recordName)
+    let   result = []
     record.forEach(el => { if (query === el) result.push(el) })
-    if (!result[0]) return console.log("No strong matches")
+    if (!result[0]) return console.log(`No strong matches for ${query}`)
     return result
   }
 
