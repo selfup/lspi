@@ -1,7 +1,7 @@
 {
   "name": "lspi",
   "version": "1.1.7",
-  "description": "A high level API for local storage",
+  "description": "A high level API/ORM for local storage",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -11,12 +11,16 @@
     "local",
     "storage",
     "local storage",
+    "localStorage",
     "api",
     "client",
     "clienside api",
     "client side",
     "client side",
     "client side active record",
+    "orm",
+    "local storage orm",
+    "local storage database management",
     "local storage api"
   ],
   "author": "selfup",

@@ -31,7 +31,8 @@ class Lspi {
     try {
       localStorage.setItem(recordName, JSON.stringify(data))
     } catch (error) {
-      console.error(`Error setting the "${recordName}" Record`)
+      console.log(`ERROR:\n\n${error}\n\n:ERROR\n\n`)
+      console.error(`Could not set the "${recordName}" Record`)
     }
   }
 
@@ -43,24 +44,51 @@ class Lspi {
     try {
       localStorage.setItem(recordName, string)
     } catch (error) {
-      console.error(`Error setting the "${recordName}" Record`)
+      console.log(`ERROR:\n\n${error}\n\n:ERROR\n\n`)
+      console.error(`Could not set the "${recordName}" Record`)
     }
   }
 
   getRecord(recordName) {
-    const record = JSON.parse(localStorage.getItem(recordName))
-    if (!record) return console.log("record does not exist!")
-    return record
+    const obj = JSON.parse(localStorage.getItem(recordName))
+    if (!obj) return console.log(`The "${recordName}" record does not exist!`)
+    return obj
   }
 
   getRecords() {
     return Array.from(arguments).map(arg => { this.getRecord(arg) })
   }
 
+  where(recordName, key, equals) {
+    resultArr = []
+    this.getRecord(recordName).forEach(record => {
+      if (record[key] === equals) {
+        resultArr.push(record)
+      }
+    })
+    if (!resultArr[0]) {
+      return console.log(`No records match k:'${key}' with v:"${equals}"`)
+    }
+    return resultArr
+  }
+
+  whereEitherOr(recordName, keys, equals) {
+    resultArr = []
+    this.getRecord(recordName).forEach(record => {
+      if (record[key[0]] === equals || record[key[1]] === equals) {
+        resultArr.push(record)
+      }
+    })
+    if (!resultArr[0]) {
+      return console.log(`No records match k:'${key}' with v:"${equals}"`)
+    }
+    return resultArr
+  }
+
   getStringRecord(recordName) {
-    const record = localStorage.getItem(recordName)
-    if (!record) return console.log("record does not exist!")
-    return record
+    const str = localStorage.getItem(recordName)
+    if (!str) return console.log(`The "${recordName}" record does not exist!`)
+    return str
   }
 
   getStringRecords() {
