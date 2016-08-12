@@ -1,3 +1,5 @@
+const _matchOrNot   = Symbol('matchOrNot')
+
 class Lspi {
   createEmptyRecordObject(recordName) {
     const check = this.getRecord(recordName)
@@ -72,17 +74,30 @@ class Lspi {
     return resultArr
   }
 
-  whereEitherOr(recordName, keys, equals) {
+  whereEitherOr(recordName, keys, value) {
     resultArr = []
     this.getRecord(recordName).forEach(record => {
       if (record[key[0]] === equals || record[key[1]] === equals) {
         resultArr.push(record)
       }
     })
-    if (!resultArr[0]) {
-      return console.log(`No records match k:'${key}' with v:"${equals}"`)
-    }
+    if (!resultArr[0]) return this[_matchOrNot](key, equals)
     return resultArr
+  }
+
+  arrayWeakMatch(recordName, query) {
+    const record = this.getRecord(recordName)
+    let   result = []
+    record.forEach(el => { if (query.includes(el)) result.push(el) })
+    if (!result[0]) return console.log("No weak matches")
+    return result
+  }
+
+  arrayStrongMatch(recordName, query) {
+    const record = this.getRecord(recordName)
+    record.forEach(el => { if (query === el) result.push(el) })
+    if (!result[0]) return console.log("No strong matches")
+    return result
   }
 
   getStringRecord(recordName) {
@@ -105,6 +120,12 @@ class Lspi {
 
   dropAll() {
     localStorage.clear()
+  }
+
+  // ** private
+
+  [_matchOrNot](key, equals) {
+    return console.log(`No records match k:'${key}' with v:"${equals}"`)
   }
 }
 
