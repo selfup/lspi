@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/selfup/lspi"
   },
+  "scripts": {
+    "prep": "babel index.es6.js --out-file index.js"
+  },
   "keywords": [
     "local",
     "storage",
@@ -24,5 +27,10 @@
     "local storage api"
   ],
   "author": "selfup",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-latest": "^6.16.0"
+  }
 }
