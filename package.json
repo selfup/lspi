@@ -8,7 +8,7 @@
     "url": "https://github.com/selfup/lspi"
   },
   "scripts": {
-    "prep": "babel index.es6.js --out-file index.js"
+    "prep": "babel index.es6.js --out-file index.js --presets=latest"
   },
   "keywords": [
     "local",

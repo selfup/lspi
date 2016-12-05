@@ -49,7 +49,7 @@ var Lspi = function () {
     key: "setRecord",
     value: function setRecord(recordName, data) {
       try {
-        localStorage.setItem(recordName, JSON.stringify(data));
+        localStorage[recordName] = JSON.stringify(data);
       } catch (error) {
         console.log("ERROR:\n\n" + error + "\n\n:ERROR\n\n");
         console.error("Could not set the \"" + recordName + "\" Record");
@@ -77,7 +77,7 @@ var Lspi = function () {
   }, {
     key: "getRecord",
     value: function getRecord(recordName) {
-      var obj = JSON.parse(localStorage.getItem(recordName));
+      var obj = JSON.parse(localStorage[recordName]);
       if (!obj) return console.log("The \"" + recordName + "\" record does not exist!");
       return obj;
     }

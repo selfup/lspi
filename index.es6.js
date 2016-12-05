@@ -29,7 +29,7 @@ class Lspi {
 
   setRecord(recordName, data) {
     try {
-      localStorage.setItem(recordName, JSON.stringify(data))
+      localStorage[recordName] = JSON.stringify(data)
     } catch (error) {
       console.log(`ERROR:\n\n${error}\n\n:ERROR\n\n`)
       console.error(`Could not set the "${recordName}" Record`)
@@ -50,7 +50,7 @@ class Lspi {
   }
 
   getRecord(recordName) {
-    const obj = JSON.parse(localStorage.getItem(recordName))
+    const obj = JSON.parse(localStorage[recordName])
     if (!obj) return console.log(`The "${recordName}" record does not exist!`)
     return obj
   }
