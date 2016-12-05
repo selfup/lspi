@@ -3,57 +3,46 @@
 
 ### Basic ORM for local storage that can save you time!
 
-You will need webpack/browserify for this to work!
+Super easy to use!
 
-Super easy to use with React/Angular2/Ember2/Vue.js
-
-***
-
-To add to your `package.json`:
+### Install
 
 `npm install lspi --save`
+
+### Basics
 
 ```javascript
 const Lspi = require('lspi')
 const lspi = new Lspi()
 
-lspi.createEmptyRecordObject("testOne")
-// Returns undefined
-// Stores #=> "{}"
-// Now you can add keys to the result of getRecord
+lspi.put('testOne', {})
+// Returns -> undefined
+// Stores -> "{}"
 
-lspi.createEmptyRecordArray("testTwo")
-// Returns undefined
-// Stores #=> "[]"
-// Now you can manipulate the array store with getRecord
+lspi.grab('testOne')
+// Returns -> {}
 
-lspi.getRecord("testOne")
-// Returns #=> {}
+lspi.put('testTwo', {})
+// Returns -> undefined
+// Stores -> "[]"
 
-lspi.getRecord("testTwo")
-// Returns #=> []
+lspi.grab('testTwo')
+// Returns -> []
 
-// If you already have your object built and want to store it:
-// Also if you want to update what is in localStorage:
-lspi.setRecord("testThree", { someKey: "some value" })
-// Returns #=> undefined
-// Stores #=> "{"someKey": "some value"}"
+lspi.put('testOne', { name: 'test' })
+// Returns -> undefined
+// Stores -> "{"someKey": "some value"}"
 
-// If you want to store a raw string
-lspi.setStringRecord("testFour", "this is what I want to store")
-// Returns #=> undefined
-// Stores #=> "this is what I want to store"
+lspi.by('testOne', 'name', 'test')
+// Returns -> { someKey: 'some value' }
 
-lspi.getStringRecord("testFour")
-// Returns #=> "this is what I want to store"
-
-lspi.deleteRecord("testOne")
-// Returns #=> undefined
-// this will clear an exact record from local storage for your webpage
+lspi.drop('testOne')
+// Returns -> undefined
+// this will delete the 'testOne' record from localStorage
 
 lspi.dropAll() 
-// Returns #=> undefined
-// Drops ALL localStorage records associated to your webpage
+// Returns -> undefined
+// Drops ALL localStorage associated to your domain
 ```
 
 ### License: MIT

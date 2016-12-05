@@ -10,168 +10,88 @@ var Lspi = function () {
   }
 
   _createClass(Lspi, [{
-    key: "createEmptyRecordObject",
-    value: function createEmptyRecordObject(recordName) {
-      var check = this.getRecord(recordName);
-      if (check) console.log("The record: \"" + arg + "\" already exists!");
-      if (!check) localStorage.setItem(arg, JSON.stringify({}));
+    key: "grab",
+    value: function grab(name) {
+      return JSON.parse(localStorage[name]);
     }
   }, {
-    key: "createEmptyRecordObjects",
-    value: function createEmptyRecordObjects() {
+    key: "grabs",
+    value: function grabs() {
       var _this = this;
 
-      Array.from(arguments).forEach(function (arg) {
-        var check = _this.getRecord(arg);
-        if (check) console.log("The record: \"" + arg + "\" already exists!");
-        if (!check) localStorage.setItem(arg, JSON.stringify({}));
+      return Array.from(arguments).map(function (e) {
+        return _this.grab(e);
       });
     }
   }, {
-    key: "createEmptyRecordArray",
-    value: function createEmptyRecordArray(recordName) {
-      var check = this.getRecord(recordName);
-      if (check) console.log("The record: \"" + recordName + "\" already exists!");
-      if (!check) localStorage.setItem(recordName, JSON.stringify([]));
+    key: "put",
+    value: function put(name, data) {
+      localStorage[name] = JSON.stringify(data);
     }
   }, {
-    key: "createEmptyRecordArrays",
-    value: function createEmptyRecordArrays() {
+    key: "puts",
+    value: function puts() {
       var _this2 = this;
 
-      Array.from(arguments).forEach(function (arg) {
-        var check = _this2.getRecord(arg);
-        if (check) console.log("The record: \"" + arg + "\" already exists!");
-        if (!check) localStorage.setItem(arg, JSON.stringify([]));
+      Array.from(arguments).forEach(function (e) {
+        return _this2.put(e[0], e[1]);
       });
     }
   }, {
-    key: "setRecord",
-    value: function setRecord(recordName, data) {
-      try {
-        localStorage[recordName] = JSON.stringify(data);
-      } catch (error) {
-        console.log("ERROR:\n\n" + error + "\n\n:ERROR\n\n");
-        console.error("Could not set the \"" + recordName + "\" Record");
-      }
-    }
-  }, {
-    key: "setRecords",
-    value: function setRecords(args) {
-      var _this3 = this;
-
-      args.forEach(function (arg) {
-        return _this3.setRecord(arg[0], arg[1]);
-      });
-    }
-  }, {
-    key: "setStringRecord",
-    value: function setStringRecord(recordName, string) {
-      try {
-        localStorage.setItem(recordName, string);
-      } catch (error) {
-        console.log("ERROR:\n\n" + error + "\n\n:ERROR\n\n");
-        console.error("Could not set the \"" + recordName + "\" Record");
-      }
-    }
-  }, {
-    key: "getRecord",
-    value: function getRecord(recordName) {
-      var obj = JSON.parse(localStorage[recordName]);
-      if (!obj) return console.log("The \"" + recordName + "\" record does not exist!");
-      return obj;
-    }
-  }, {
-    key: "getRecords",
-    value: function getRecords() {
-      var _this4 = this;
-
-      return Array.from(arguments).map(function (arg) {
-        return _this4.getRecord(arg);
+    key: "by",
+    value: function by(name, k, v) {
+      return this.grab(name).find(function (e) {
+        return e[k] === v;
       });
     }
   }, {
     key: "where",
-    value: function where(recordName, key, equals) {
-      resultArr = [];
-      this.getRecord(recordName).forEach(function (record) {
-        if (record[key] === equals) {
-          resultArr.push(record);
-        }
+    value: function where(name, k, v) {
+      return this.grab(name).filter(function (e) {
+        return e[k] === v;
       });
-      if (!resultArr[0]) {
-        return console.log("No records match k:'" + key + "' with v:\"" + equals + "\"");
-      }
-      return resultArr;
     }
   }, {
     key: "whereEitherOr",
-    value: function whereEitherOr(recordName, keys, value) {
-      resultArr = [];
-      this.getRecord(recordName).forEach(function (record) {
-        if (record[key[0]] === equals || record[key[1]] === equals) {
-          resultArr.push(record);
-        }
+    value: function whereEitherOr(name, k, v) {
+      return this.grab(name).filter(function (e) {
+        return e[k[0]] === v || e[k[1]] === v;
       });
-      if (!resultArr[0]) return false;
-      return resultArr;
-    }
-  }, {
-    key: "arrayWeakMatch",
-    value: function arrayWeakMatch(recordName, query) {
-      var record = this.getRecord(recordName);
-      var result = [];
-      record.forEach(function (el) {
-        if (query.includes(el)) result.push(el);
-      });
-      if (!result[0]) return console.log("No weak matches for " + query);
-      return result;
     }
   }, {
     key: "arrayStrongMatch",
-    value: function arrayStrongMatch(recordName, query) {
-      var record = this.getRecord(recordName);
-      var result = [];
-      record.forEach(function (el) {
-        if (query === el) result.push(el);
-      });
-      if (!result[0]) return console.log("No strong matches for " + query);
-      return result;
-    }
-  }, {
-    key: "getStringRecord",
-    value: function getStringRecord(recordName) {
-      var str = localStorage.getItem(recordName);
-      if (!str) return console.log("The \"" + recordName + "\" record does not exist!");
-      return str;
-    }
-  }, {
-    key: "getStringRecords",
-    value: function getStringRecords() {
-      var _this5 = this;
-
-      return Array.from(arguments).map(function (arg) {
-        return _this5.getRecord(arg);
+    value: function arrayStrongMatch(name, value) {
+      return this.grab(name).filter(function (e) {
+        return value === e;
       });
     }
   }, {
-    key: "deleteRecord",
-    value: function deleteRecord(recordName) {
-      localStorage.removeItem(recordName);
+    key: "arrayWeakMatch",
+    value: function arrayWeakMatch(name, value) {
+      return this.grab(name).filter(function (e) {
+        return value.includes(e);
+      });
     }
   }, {
-    key: "deleteRecords",
-    value: function deleteRecords() {
-      var _this6 = this;
+    key: "drop",
+    value: function drop(name) {
+      delete localStorage[name];
+    }
+  }, {
+    key: "drops",
+    value: function drops() {
+      var _this3 = this;
 
-      Array.from(arguments).forEach(function (arg) {
-        return _this6.deleteRecord(arg);
+      Array.from(arguments).forEach(function (e) {
+        return _this3.drop(e);
       });
     }
   }, {
     key: "dropAll",
     value: function dropAll() {
-      localStorage.clear();
+      Object.keys(localStorage).forEach(function (e) {
+        return delete localStorage(e);
+      });
     }
   }]);
 
