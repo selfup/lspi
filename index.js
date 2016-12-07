@@ -10,65 +10,65 @@ var Lspi = function () {
   }
 
   _createClass(Lspi, [{
-    key: "grab",
-    value: function grab(name) {
+    key: "get",
+    value: function get(name) {
       return JSON.parse(localStorage[name]);
     }
   }, {
-    key: "grabs",
-    value: function grabs() {
+    key: "gets",
+    value: function gets() {
       var _this = this;
 
       return Array.from(arguments).map(function (e) {
-        return _this.grab(e);
+        return _this.get(e);
       });
     }
   }, {
-    key: "put",
-    value: function put(name, data) {
+    key: "set",
+    value: function set(name, data) {
       localStorage[name] = JSON.stringify(data);
     }
   }, {
-    key: "puts",
-    value: function puts() {
+    key: "sets",
+    value: function sets() {
       var _this2 = this;
 
       Array.from(arguments).forEach(function (e) {
-        return _this2.put(e[0], e[1]);
+        return _this2.set(e[0], e[1]);
       });
     }
   }, {
     key: "by",
     value: function by(name, k, v) {
-      return this.grab(name).find(function (e) {
+      return this.get(name).find(function (e) {
         return e[k] === v;
       });
     }
   }, {
     key: "where",
     value: function where(name, k, v) {
-      return this.grab(name).filter(function (e) {
+      return this.get(name).filter(function (e) {
         return e[k] === v;
       });
     }
   }, {
     key: "whereEitherOr",
     value: function whereEitherOr(name, k, v) {
-      return this.grab(name).filter(function (e) {
+      return this.get(name).filter(function (e) {
         return e[k[0]] === v || e[k[1]] === v;
       });
     }
   }, {
     key: "arrayStrongMatch",
     value: function arrayStrongMatch(name, value) {
-      return this.grab(name).filter(function (e) {
+      return this.get(name).filter(function (e) {
         return value === e;
       });
     }
   }, {
     key: "arrayWeakMatch",
     value: function arrayWeakMatch(name, value) {
-      return this.grab(name).filter(function (e) {
+      return this.get(name).filter(function (e) {
         return value.includes(e);
       });
     }
@@ -98,4 +98,4 @@ var Lspi = function () {
   return Lspi;
 }();
 
-module.exports = Lspi;
+module.exports = new Lspi();

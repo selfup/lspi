@@ -5,6 +5,8 @@
 
 Super easy to use!
 
+Only made for **Objects** and **Arrays**. Storing strings is easy enough :joy:
+
 ### Install
 
 `npm install lspi --save`

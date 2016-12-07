@@ -8,6 +8,8 @@
     "url": "https://github.com/selfup/lspi"
   },
   "scripts": {
+    "test": "jasmine",
+    "watch": "babel --watch index.es6.js --out-file index.js --presets=latest",
     "prep": "babel index.es6.js --out-file index.js --presets=latest"
   },
   "keywords": [
@@ -31,6 +33,7 @@
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-polyfill": "^6.16.0",
-    "babel-preset-latest": "^6.16.0"
+    "babel-preset-latest": "^6.16.0",
+    "jasmine": "^2.5.2"
   }
 }

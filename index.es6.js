@@ -1,38 +1,38 @@
 class Lspi {
-  grab(name) {
+  get(name) {
     return JSON.parse(localStorage[name])
   }
 
-  grabs() {
-    return Array.from(arguments).map(e => this.grab(e))
+  gets() {
+    return Array.from(arguments).map(e => this.get(e))
   }
 
-  put(name, data) {
+  set(name, data) {
     localStorage[name] = JSON.stringify(data)
   }
 
-  puts() {
-    Array.from(arguments).forEach(e => this.put(e[0], e[1]))
+  sets() {
+    Array.from(arguments).forEach(e => this.set(e[0], e[1]))
   }
 
   by(name, k, v) {
-    return this.grab(name).find(e => e[k] === v)
+    return this.get(name).find(e => e[k] === v)
   }
 
   where(name, k, v) {
-    return this.grab(name).filter(e => e[k] === v)
+    return this.get(name).filter(e => e[k] === v)
   }
 
   whereEitherOr(name, k, v) {
-    return this.grab(name).filter(e => e[k[0]] === v || e[k[1]] === v)
+    return this.get(name).filter(e => e[k[0]] === v || e[k[1]] === v)
   }
 
   arrayStrongMatch(name, value) {
-    return this.grab(name).filter(e => value === e)
+    return this.get(name).filter(e => value === e)
   }
 
   arrayWeakMatch(name, value) {
-    return this.grab(name).filter(e => value.includes(e))
+    return this.get(name).filter(e => value.includes(e))
   }
 
   drop(name) {
@@ -48,4 +48,4 @@ class Lspi {
   }
 }
 
-module.exports = Lspi
+module.exports = new Lspi()
