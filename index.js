@@ -38,6 +38,11 @@ var Lspi = function () {
       });
     }
   }, {
+    key: "update",
+    value: function update(name, obj) {
+      this.set(name, Object.assign(this.get(name), obj));
+    }
+  }, {
     key: "by",
     value: function by(name, k, v) {
       return this.get(name).find(function (e) {
