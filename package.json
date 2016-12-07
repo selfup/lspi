@@ -1,7 +1,7 @@
 {
   "name": "lspi",
-  "version": "1.2.1",
-  "description": "A high level API/ORM for local storage",
+  "version": "2.0.0",
+  "description": "A high level API/ORM for localStorage",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
     "local storage database management",
     "local storage api"
   ],
-  "author": "selfup",
+  "author": "selfup - Regis Jean-Pierre Boudinot",
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.18.0",
