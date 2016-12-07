@@ -15,6 +15,10 @@ class Lspi {
     Array.from(arguments).forEach(e => this.set(e[0], e[1]))
   }
 
+  update(name, obj) {
+    this.set(name, Object.assign(this.get(name), obj))
+  }
+
   by(name, k, v) {
     return this.get(name).find(e => e[k] === v)
   }
