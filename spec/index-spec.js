@@ -1,4 +1,3 @@
-localStorage = {}
 const lspi = require('./../index.js')
 
 beforeEach(function() {
