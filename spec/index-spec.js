@@ -24,3 +24,15 @@ describe("lspi basics", function() {
     expect(stringData).toBe('wowow')
   });
 });
+
+describe("lspi multiples", function() {
+  it("should be easy to set and get properties in localStorage", function() {
+    lspi.sets(['test', {wow: 'wow'}], ['test2', {wow: 'wow'}])
+
+    const testDataOne = lspi.get('test')
+    const testDataTwo = lspi.get('test2')
+
+    expect(testDataOne.wow).toBe('wow')
+    expect(testDataTwo.wow).toBe('wow')
+  });
+});

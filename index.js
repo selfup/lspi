@@ -4,24 +4,23 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var _jsonOrString = function _jsonOrString(data) {
+  try {
+    return JSON.parse(data);
+  } catch (e) {
+    return data;
+  }
+};
+
 var Lspi = function () {
   function Lspi() {
     _classCallCheck(this, Lspi);
   }
 
   _createClass(Lspi, [{
-    key: 'jsonOrString',
-    value: function jsonOrString(data) {
-      try {
-        return JSON.parse(data);
-      } catch (e) {
-        return data;
-      }
-    }
-  }, {
     key: 'get',
     value: function get(name) {
-      return this.jsonOrString(localStorage[name]);
+      return _jsonOrString(localStorage[name]);
     }
   }, {
     key: 'gets',

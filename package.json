@@ -9,8 +9,8 @@
   },
   "scripts": {
     "test": "jasmine",
-    "watch": "babel --watch index.es6.js --out-file index.js --presets=latest",
-    "prep": "babel index.es6.js --out-file index.js --presets=latest"
+    "watch": "babel --watch lib/index.js --out-file index.js --presets=latest",
+    "prep": "babel lib/index.js --out-file index.js --presets=latest"
   },
   "keywords": [
     "local",
