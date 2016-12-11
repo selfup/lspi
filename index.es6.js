@@ -1,6 +1,10 @@
 class Lspi {
+  jsonOrString(data) {
+    try { return JSON.parse(data) } catch (e) { return data }
+  }
+
   get(name) {
-    return JSON.parse(localStorage[name])
+    return this.jsonOrString(localStorage[name])
   }
 
   gets() {
@@ -8,6 +12,7 @@ class Lspi {
   }
 
   set(name, data) {
+    if (typeof data === 'string') localStorage[name] = data
     localStorage[name] = JSON.stringify(data)
   }
 

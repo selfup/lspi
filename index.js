@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -10,12 +10,21 @@ var Lspi = function () {
   }
 
   _createClass(Lspi, [{
-    key: "get",
-    value: function get(name) {
-      return JSON.parse(localStorage[name]);
+    key: 'jsonOrString',
+    value: function jsonOrString(data) {
+      try {
+        return JSON.parse(data);
+      } catch (e) {
+        return data;
+      }
     }
   }, {
-    key: "gets",
+    key: 'get',
+    value: function get(name) {
+      return this.jsonOrString(localStorage[name]);
+    }
+  }, {
+    key: 'gets',
     value: function gets() {
       var _this = this;
 
@@ -24,12 +33,13 @@ var Lspi = function () {
       });
     }
   }, {
-    key: "set",
+    key: 'set',
     value: function set(name, data) {
+      if (typeof data === 'string') localStorage[name] = data;
       localStorage[name] = JSON.stringify(data);
     }
   }, {
-    key: "sets",
+    key: 'sets',
     value: function sets() {
       var _this2 = this;
 
@@ -38,52 +48,52 @@ var Lspi = function () {
       });
     }
   }, {
-    key: "update",
+    key: 'update',
     value: function update(name, obj) {
       this.set(name, Object.assign(this.get(name), obj));
     }
   }, {
-    key: "by",
+    key: 'by',
     value: function by(name, k, v) {
       return this.get(name).find(function (e) {
         return e[k] === v;
       });
     }
   }, {
-    key: "where",
+    key: 'where',
     value: function where(name, k, v) {
       return this.get(name).filter(function (e) {
         return e[k] === v;
       });
     }
   }, {
-    key: "whereEitherOr",
+    key: 'whereEitherOr',
     value: function whereEitherOr(name, k, v) {
       return this.get(name).filter(function (e) {
         return e[k[0]] === v || e[k[1]] === v;
       });
     }
   }, {
-    key: "arrayStrongMatch",
+    key: 'arrayStrongMatch',
     value: function arrayStrongMatch(name, value) {
       return this.get(name).filter(function (e) {
         return value === e;
       });
     }
   }, {
-    key: "arrayWeakMatch",
+    key: 'arrayWeakMatch',
     value: function arrayWeakMatch(name, value) {
       return this.get(name).filter(function (e) {
         return value.includes(e);
       });
     }
   }, {
-    key: "drop",
+    key: 'drop',
     value: function drop(name) {
       delete localStorage[name];
     }
   }, {
-    key: "drops",
+    key: 'drops',
     value: function drops() {
       var _this3 = this;
 
@@ -92,7 +102,7 @@ var Lspi = function () {
       });
     }
   }, {
-    key: "dropAll",
+    key: 'dropAll',
     value: function dropAll() {
       Object.keys(localStorage).forEach(function (e) {
         return delete localStorage(e);
