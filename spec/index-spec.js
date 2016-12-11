@@ -26,7 +26,7 @@ describe("lspi basics", function() {
 });
 
 describe("lspi multiples", function() {
-  it("should be easy to set and get properties in localStorage", function() {
+  it("should be easy to set multiple records in localStorage", function() {
     lspi.sets(['test', {wow: 'wow'}], ['test2', {wow: 'wow'}])
 
     const testDataOne = lspi.get('test')
@@ -34,5 +34,45 @@ describe("lspi multiples", function() {
 
     expect(testDataOne.wow).toBe('wow')
     expect(testDataTwo.wow).toBe('wow')
+  });
+
+  it("should be easy to get multiple records in localStorage", function() {
+    lspi.sets(['test', {wow: 'wow'}], ['test2', {wow: 'wow'}])
+
+    const testData = lspi.gets('test', 'test2')
+
+    expect(testData[0].wow).toBe('wow')
+    expect(testData[1].wow).toBe('wow')
+  });
+});
+
+describe("lspi drop", function() {
+  it("should drop data individually", function() {
+    lspi.sets(['test', {wow: 'wow'}], ['test2', {wow: 'wow'}])
+
+    lspi.drop('test2')
+
+    expect(Object.keys(localStorage).length).toBe(1)
+  });
+
+  it("should drop all data without re-assigning", function() {
+    lspi.sets(['test', {wow: 'wow'}], ['test2', {wow: 'wow'}])
+
+    lspi.dropAll()
+
+    expect(Object.keys(localStorage).length).toBe(0)
+  });
+
+  it("should drop multiple records", function() {
+    lspi.sets(
+      ['test', {wow: 'wow'}],
+      ['test2', {wow: 'wow'}],
+      ['test3', {wow: 'wow'}]
+    )
+
+    lspi.drops('test', 'test3')
+
+    expect(Object.keys(localStorage).length).toBe(1)
+    expect(lspi.get('test2')).toEqual({wow: 'wow'})
   });
 });

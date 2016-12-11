@@ -104,7 +104,7 @@ var Lspi = function () {
     key: 'dropAll',
     value: function dropAll() {
       Object.keys(localStorage).forEach(function (e) {
-        return delete localStorage(e);
+        return delete localStorage[e];
       });
     }
   }]);
