@@ -5,7 +5,7 @@ beforeEach(function() {
 })
 
 describe("lspi basics", function() {
-  it("should be easy to set and get properties in localStorage", function() {
+  it("should be easy to set and get single records in localStorage", function() {
     lspi.set('test', {wow: 'wow'})
 
     const testData = lspi.get('test')
@@ -74,5 +74,37 @@ describe("lspi drop", function() {
 
     expect(Object.keys(localStorage).length).toBe(1)
     expect(lspi.get('test2')).toEqual({wow: 'wow'})
+  });
+});
+
+describe("lspi update", function() {
+  it("should be able to update a single key value", function() {
+    lspi.set('test1', {wow: 'wow', ok: 'ok'})
+
+    lspi.update('test1', {ok: 'ok change'})
+
+    expect(lspi.get('test1').ok).toBe('ok change')
+  });
+
+  it("should be able to add a key value pair to the record", function() {
+    lspi.set('test1', {wow: 'wow', ok: 'ok'})
+
+    lspi.update('test1', {omg: 'omg'})
+
+    expect(lspi.get('test1').omg).toBe('omg')
+  });
+});
+
+describe("lspi array", function() {
+  it("should return all rows matching in a record with 'where'", function() {
+    lspi.set('test1', [
+      {wow: 'wow', ok: 'ok'},
+      {wow: 'wow', ok: 'lol'},
+      {wow: 'nope', ok: 'okok'}
+    ])
+
+    const found = lspi.where('test1', 'wow', 'wow')
+
+    expect(found).toEqual([{wow: 'wow', ok: 'ok'}, {wow: 'wow', ok: 'lol'}])
   });
 });
