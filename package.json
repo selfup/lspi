@@ -1,0 +1,38 @@
+{
+  "name": "lspi",
+  "version": "2.0.4",
+  "description": "A high level API/ORM for localStorage",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/selfup/lspi"
+  },
+  "scripts": {
+    "test": "jasmine",
+    "watch": "babel --watch lib/index.js --out-file index.js --presets=latest",
+    "prep": "babel lib/index.js --out-file index.js --presets=latest"
+  },
+  "keywords": [
+    "local",
+    "storage",
+    "local storage",
+    "localStorage",
+    "api",
+    "client",
+    "clienside api",
+    "client side",
+    "client side",
+    "client side active record",
+    "orm",
+    "local storage orm",
+    "local storage database management",
+    "local storage api"
+  ],
+  "author": "selfup - Regis Jean-Pierre Boudinot",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-latest": "^6.16.0",
+    "jasmine": "^2.5.2"
+  }
+}
