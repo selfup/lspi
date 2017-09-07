@@ -4,46 +4,23 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _jsonOrString = function _jsonOrString(data) {
+function jsonOrString(data) {
   try {
     return JSON.parse(data);
   } catch (e) {
     return data;
   }
-};
+}
 
 var Lspi = function () {
   function Lspi() {
     _classCallCheck(this, Lspi);
-
-    // MDN polyfill for Object.assign
-    if (typeof Object.assign != 'function') {
-      Object.assign = function (target, varArgs) {
-        'use strict';
-
-        if (target == null) {
-          throw new TypeError('Cannot convert undefined or null to object');
-        }
-        var to = Object(target);
-        for (var index = 1; index < arguments.length; index++) {
-          var nextSource = arguments[index];
-          if (nextSource != null) {
-            for (var nextKey in nextSource) {
-              if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
-                to[nextKey] = nextSource[nextKey];
-              }
-            }
-          }
-        }
-        return to;
-      };
-    }
   }
 
   _createClass(Lspi, [{
     key: 'get',
     value: function get(name) {
-      return _jsonOrString(localStorage[name]);
+      return jsonOrString(localStorage[name]);
     }
   }, {
     key: 'gets',
