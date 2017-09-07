@@ -7,6 +7,8 @@ Super easy to use!
 
 Store and retrieve valid JSON objects/arrays or simple strings :smile:
 
+Make sure to use polyfills for `Array.from` and `Object.assign` when bundling your application code! :tada:
+
 ### Install
 
 `npm install lspi --save`
