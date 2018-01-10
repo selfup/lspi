@@ -1,16 +1,27 @@
 {
   "name": "lspi",
-  "version": "2.0.4",
+  "version": "3.0.0",
   "description": "A high level API/ORM for localStorage",
-  "main": "index.js",
+  "main": "dist/lspi.js",
+  "jsnext:main": "src/index.js",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/selfup/lspi"
   },
+  "files": [
+    "src",
+    "dist"
+  ],
   "scripts": {
-    "test": "jasmine",
-    "watch": "babel --watch lib/index.js --out-file index.js --presets=latest",
-    "prep": "babel lib/index.js --out-file index.js --presets=latest"
+    "test": "mkdir dist; npm run build && jest --coverage --no-cache",
+    "build": "npm run bundle && npm run minify",
+    "bundle": "rollup -c",
+    "minify": "uglifyjs dist/lspi.js -o dist/lspi.js",
+    "prepare": "npm run build"
+  },
+  "jest": {
+    "transform": {}
   },
   "keywords": [
     "local",
@@ -29,10 +40,19 @@
     "local storage api"
   ],
   "author": "selfup - Regis Jean-Pierre Boudinot",
-  "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-latest": "^6.24.1",
-    "jasmine": "^2.5.2"
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^4.13.1",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "jest": "^22.0.5",
+    "regenerator-runtime": "^0.11.1",
+    "rollup": "^0.53.3",
+    "rollup-plugin-babel": "^3.0.3",
+    "uglify-js": "3.2.2"
   }
 }
