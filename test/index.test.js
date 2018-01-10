@@ -1,11 +1,12 @@
-const lspi = require('./../index.js')
+const lspi = require('./../dist/lspi.js')
+global.ocalStorage = {}
 
-beforeEach(function() {
+beforeEach(() => {
   localStorage = {}
 })
 
-describe("lspi basics", function() {
-  it("should be easy to set and get single records in localStorage", function() {
+describe('lspi basics', () => {
+  test('should be easy to set and get single records in localStorage', () => {
     lspi.set('test', {wow: 'wow'})
 
     const testData = lspi.get('test')
@@ -13,7 +14,7 @@ describe("lspi basics", function() {
     expect(testData.wow).toBe('wow')
   });
 
-  it("should return a string if string or data if JSON", function() {
+  test('should return a string if string or data if JSON', () => {
     lspi.set('objTest', {wow: 'wow'})
     lspi.set('stringTest', 'wowow')
 
@@ -25,8 +26,8 @@ describe("lspi basics", function() {
   });
 });
 
-describe("lspi multiples", function() {
-  it("should be easy to set multiple records in localStorage", function() {
+describe('lspi multiples', () => {
+  test('should be easy to set multiple records in localStorage', () => {
     lspi.sets(['test', {wow: 'wow'}], ['test2', {wow: 'wow'}])
 
     const testDataOne = lspi.get('test')
@@ -36,7 +37,7 @@ describe("lspi multiples", function() {
     expect(testDataTwo.wow).toBe('wow')
   });
 
-  it("should be easy to get multiple records in localStorage", function() {
+  test('should be easy to get multiple records in localStorage', () => {
     lspi.sets(['test', {wow: 'wow'}], ['test2', {wow: 'wow'}])
 
     const testData = lspi.gets('test', 'test2')
@@ -46,8 +47,8 @@ describe("lspi multiples", function() {
   });
 });
 
-describe("lspi drop", function() {
-  it("should drop data individually", function() {
+describe('lspi drop', () => {
+  test('should drop data individually', () => {
     lspi.sets(['test', {wow: 'wow'}], ['test2', {wow: 'wow'}])
 
     lspi.drop('test2')
@@ -55,7 +56,7 @@ describe("lspi drop", function() {
     expect(Object.keys(localStorage).length).toBe(1)
   });
 
-  it("should drop all data without re-assigning", function() {
+  test('should drop all data wtesthout re-assigning', () => {
     lspi.sets(['test', {wow: 'wow'}], ['test2', {wow: 'wow'}])
 
     lspi.dropAll()
@@ -63,7 +64,7 @@ describe("lspi drop", function() {
     expect(Object.keys(localStorage).length).toBe(0)
   });
 
-  it("should drop multiple records", function() {
+  test('should drop multiple records', () => {
     lspi.sets(
       ['test', {wow: 'wow'}],
       ['test2', {wow: 'wow'}],
@@ -77,8 +78,8 @@ describe("lspi drop", function() {
   });
 });
 
-describe("lspi update", function() {
-  it("should be able to update a single key value", function() {
+describe('lspi update', () => {
+  test('should be able to update a single key value', () => {
     lspi.set('test1', {wow: 'wow', ok: 'ok'})
 
     lspi.update('test1', {ok: 'ok change'})
@@ -86,7 +87,7 @@ describe("lspi update", function() {
     expect(lspi.get('test1').ok).toBe('ok change')
   });
 
-  it("should be able to add a key value pair to the record", function() {
+  test('should be able to add a key value pair to the record', () => {
     lspi.set('test1', {wow: 'wow', ok: 'ok'})
 
     lspi.update('test1', {omg: 'omg'})
@@ -95,8 +96,8 @@ describe("lspi update", function() {
   });
 });
 
-describe("lspi array", function() {
-  it("should return all rows matching in a record with 'where'", function() {
+describe('lspi array', () => {
+  test('should return all rows matching in a record', () => {
     lspi.set('test1', [
       {wow: 'wow', ok: 'ok'},
       {wow: 'wow', ok: 'lol'},
