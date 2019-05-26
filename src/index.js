@@ -1,12 +1,12 @@
 function jsonOrString(data) {
-  try { 
+  try {
     return JSON.parse(data);
   } catch (e) {
     return data;
   }
 }
 
-export default new class Lspi {
+export default new (class Lspi {
   get(name) {
     return jsonOrString(localStorage[name]);
   }
@@ -41,6 +41,6 @@ export default new class Lspi {
   }
 
   dropAll() {
-    Object.keys(localStorage).forEach(e => delete localStorage[e])
+    Object.keys(localStorage).forEach(e => delete localStorage[e]);
   }
-};
+})();
