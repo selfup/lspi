@@ -1,4 +1,5 @@
 const lspi = require('./../dist/lspi.js');
+
 global.localStorage = {};
 
 beforeEach(() => {

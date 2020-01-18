@@ -21,9 +21,6 @@
     "prepare": "npm run build",
     "release": "npm test && git push && git push --tags && npm publish"
   },
-  "babel": {
-    "presets": "env"
-  },
   "jest": {
     "transform": {}
   },
@@ -45,18 +42,16 @@
   ],
   "author": "selfup - Regis Jean-Pierre Boudinot",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-es2015": "^6.24.1",
+    "@babel/core": "^7.8.3",
+    "@babel/plugin-external-helpers": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^12.0.0",
     "eslint-plugin-import": "^2.20.0",
     "jest": "^24.9.0",
     "regenerator-runtime": "^0.11.1",
-    "rollup": "^0.53.4",
-    "rollup-plugin-babel": "^3.0.7",
+    "rollup": "^1.29.0",
+    "rollup-plugin-babel": "^4.0.3",
     "uglify-js": "3.2.2"
   }
 }
