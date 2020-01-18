@@ -1,6 +1,6 @@
 {
   "name": "lspi",
-  "version": "3.1.2",
+  "version": "3.2.0",
   "description": "A high level API/ORM for localStorage",
   "main": "dist/lspi.js",
   "jsnext:main": "src/index.js",
