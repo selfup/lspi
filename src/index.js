@@ -12,7 +12,7 @@ export default new (class Lspi {
   }
 
   gets() {
-    return Array.from(arguments).map(e => this.get(e));
+    return Array.from(arguments).map((e) => this.get(e));
   }
 
   set(name, data) {
@@ -21,7 +21,7 @@ export default new (class Lspi {
   }
 
   sets() {
-    Array.from(arguments).forEach(e => this.set(e[0], e[1]));
+    Array.from(arguments).forEach((e) => this.set(e[0], e[1]));
   }
 
   update(name, obj) {
@@ -29,7 +29,7 @@ export default new (class Lspi {
   }
 
   where(name, k, v) {
-    return this.get(name).filter(e => e[k] === v);
+    return this.get(name).filter((e) => e[k] === v);
   }
 
   drop(name) {
@@ -37,10 +37,10 @@ export default new (class Lspi {
   }
 
   drops() {
-    Array.from(arguments).forEach(e => this.drop(e));
+    Array.from(arguments).forEach((e) => this.drop(e));
   }
 
   dropAll() {
-    Object.keys(localStorage).forEach(e => delete localStorage[e]);
+    Object.keys(localStorage).forEach((e) => delete localStorage[e]);
   }
 })();

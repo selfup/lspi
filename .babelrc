@@ -7,7 +7,6 @@
       }
     ]
   ],
-  "plugins": ["@babel/external-helpers"],
   "env": {
     "test": {
       "presets": [["es2015"]]
