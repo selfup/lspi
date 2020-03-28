@@ -1,6 +1,6 @@
 {
   "name": "lspi",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "A high level API/ORM for localStorage",
   "main": "dist/lspi.js",
   "jsnext:main": "src/index.js",
@@ -19,7 +19,7 @@
     "bundle": "rollup -c",
     "minify": "uglifyjs dist/lspi.js -o dist/lspi.js",
     "prepare": "npm run build",
-    "release": "npm test && git push && git push --tags && npm publish"
+    "release": "npm test && npm run prepare && git push && git push --tags && npm publish"
   },
   "jest": {
     "transform": {}
