@@ -1,6 +1,6 @@
 {
   "name": "lspi",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "description": "A high level API/ORM for localStorage",
   "main": "dist/lspi.js",
   "jsnext:main": "src/index.js",
@@ -42,9 +42,9 @@
   ],
   "author": "selfup - Regis Jean-Pierre Boudinot",
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
-    "jest": "^25.2.3",
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "jest": "^25.5.4",
     "regenerator-runtime": "^0.11.1",
     "rollup": "^1.32.1",
     "rollup-plugin-babel": "^4.4.0",
